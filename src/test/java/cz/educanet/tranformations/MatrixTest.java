@@ -63,22 +63,22 @@ public class MatrixTest {
 
     @Test
     public void times() {
-        double[][] expectedResult={
-            {1, 1, 1},
-            {1, 1, 1},
-            {0, 0, 0},
+        double[][] expectedResult = {
+                {1, 1, 1},
+                {1, 1, 1},
+                {0, 0, 0},
         };
 
-        assertEquals(MatrixFactory.create(expectedResult),b.times(c));
+        assertEquals(MatrixFactory.create(expectedResult), b.times(c));
     }
 
     @Test
     public void timesScalar() {
-        double[][] expectedResult={
-            {3, 3, 3},
-            {3, 3, 3},
+        double[][] expectedResult = {
+                {3, 3, 3},
+                {3, 3, 3},
         };
-        assertEquals(MatrixFactory.create(expectedResult),a.times(3.0));
+        assertEquals(MatrixFactory.create(expectedResult), a.times(3.0));
     }
 
     @Test
@@ -88,12 +88,12 @@ public class MatrixTest {
                 {1, 2, 1},
                 {0, 0, 1},
         };
-        assertEquals(MatrixFactory.create(expectedResult),b.add(c));
+        assertEquals(MatrixFactory.create(expectedResult), b.add(c));
     }
 
     @Test
     public void get() {
-        assertEquals(1,a.get(1,1),0);
+        assertEquals(1, a.get(1, 1), 0);
     }
 
     @Test

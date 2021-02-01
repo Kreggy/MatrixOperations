@@ -28,7 +28,7 @@ public class Matrix implements IMatrix {
     @Override
     public IMatrix times(IMatrix matrix) {
         double[][] result = new double[getRows()][matrix.getColumns()];
-        if(getColumns() == matrix.getRows()) {
+        if (getColumns() == matrix.getRows()) {
             for (int rowA = 0; rowA < getRows(); rowA++) {
                 for (int colB = 0; colB < matrix.getColumns(); colB++) {
                     for (int colA = 0; colA < getColumns(); colA++) {
@@ -43,9 +43,9 @@ public class Matrix implements IMatrix {
     @Override
     public IMatrix times(Number scalar) {
         double[][] result = new double[getRows()][getColumns()];
-        for(int row=0;row<getRows();row++) {
-            for(int col=0;col<getColumns();col++) {
-                result[row][col] = get(row,col) * (double) scalar;
+        for (int row = 0; row < getRows(); row++) {
+            for (int col = 0; col < getColumns(); col++) {
+                result[row][col] = get(row, col) * (double) scalar;
             }
         }
         return MatrixFactory.create(result);
@@ -55,9 +55,9 @@ public class Matrix implements IMatrix {
     public IMatrix add(IMatrix matrix) {
         double[][] result = new double[getRows()][getColumns()];
 
-        for(int row=0;row<getRows();row++) {
-            for(int col=0;col<getColumns();col++) {
-                result[row][col] = get(row,col) + matrix.get(row,col);
+        for (int row = 0; row < getRows(); row++) {
+            for (int col = 0; col < getColumns(); col++) {
+                result[row][col] = get(row, col) + matrix.get(row, col);
             }
         }
         return MatrixFactory.create(result);
@@ -78,6 +78,7 @@ public class Matrix implements IMatrix {
     public double determinant() {
         return 0;
     }
+
     //endregion
     //region Generated
     @Override
