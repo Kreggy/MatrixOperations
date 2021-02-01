@@ -27,22 +27,44 @@ public class Matrix implements IMatrix {
 
     @Override
     public IMatrix times(IMatrix matrix) {
-        throw new NotImplementedError(); // TODO:
+        double[][] result = new double[getRows()][matrix.getColumns()];
+
+            for(int rowA=0;rowA<getRows();rowA++) {
+                for(int colB=0;colB<matrix.getColumns();colB++) {
+                    for(int colA=0;colA<getColumns();colA++) {
+                        result[rowA][colB] += get(rowA,colA) * matrix.get(colA,colB);
+                    }
+                }
+            }
+        return MatrixFactory.create(result);
     }
 
     @Override
     public IMatrix times(Number scalar) {
-        throw new NotImplementedError(); // TODO:
+        double[][] result = new double[getRows()][getColumns()];
+        for(int row=0;row<getRows();row++) {
+            for(int col=0;col<getColumns();col++) {
+                result[row][col] *= (double) scalar;
+            }
+        }
+        return MatrixFactory.create(result);
     }
 
     @Override
     public IMatrix add(IMatrix matrix) {
-        throw new NotImplementedError(); // TODO:
+        double[][] result = new double[getRows()][getColumns()];
+
+        for(int row=0;row<getRows();row++) {
+            for(int col=0;col<getColumns();col++) {
+                result[row][col] += get(row,col);
+            }
+        }
+        return MatrixFactory.create(result);
     }
 
     @Override
     public double get(int n, int m) {
-        throw new NotImplementedError(); // TODO:
+        return rawArray[n][m];
     }
 
     //region Optional

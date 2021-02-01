@@ -63,10 +63,18 @@ public class MatrixTest {
 
     @Test
     public void times() {
+        double[][] expectedResult={
+            {1, 1, 1},
+            {1, 1, 1},
+            {0, 0, 0},
+        };
+
+        assertEquals(MatrixFactory.create(expectedResult),b.times(c));
     }
 
     @Test
     public void timesScalar() {
+        assertEquals(a,a.times(1));
     }
 
     @Test
