@@ -28,14 +28,15 @@ public class Matrix implements IMatrix {
     @Override
     public IMatrix times(IMatrix matrix) {
         double[][] result = new double[getRows()][matrix.getColumns()];
-
-            for(int rowA=0;rowA<getRows();rowA++) {
-                for(int colB=0;colB<matrix.getColumns();colB++) {
-                    for(int colA=0;colA<getColumns();colA++) {
-                        result[rowA][colB] += get(rowA,colA) * matrix.get(colA,colB);
+        if(getColumns() == matrix.getRows()) {
+            for (int rowA = 0; rowA < getRows(); rowA++) {
+                for (int colB = 0; colB < matrix.getColumns(); colB++) {
+                    for (int colA = 0; colA < getColumns(); colA++) {
+                        result[rowA][colB] += get(rowA, colA) * matrix.get(colA, colB);
                     }
                 }
             }
+        }
         return MatrixFactory.create(result);
     }
 
@@ -44,7 +45,7 @@ public class Matrix implements IMatrix {
         double[][] result = new double[getRows()][getColumns()];
         for(int row=0;row<getRows();row++) {
             for(int col=0;col<getColumns();col++) {
-                result[row][col] *= (double) scalar;
+                result[row][col] = get(row,col) * (double) scalar;
             }
         }
         return MatrixFactory.create(result);
@@ -56,7 +57,7 @@ public class Matrix implements IMatrix {
 
         for(int row=0;row<getRows();row++) {
             for(int col=0;col<getColumns();col++) {
-                result[row][col] += get(row,col);
+                result[row][col] = get(row,col) + matrix.get(row,col);
             }
         }
         return MatrixFactory.create(result);
@@ -84,7 +85,13 @@ public class Matrix implements IMatrix {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Matrix matrix = (Matrix) o;
-        return Arrays.equals(rawArray, matrix.rawArray);
+        //return Arrays.equals(rawArray, matrix.rawArray);
+
+        for (int row = 0; row < rawArray.length; row++) {
+            if (!Arrays.equals(rawArray[row], matrix.rawArray[row]))
+                return false;
+        }
+        return true;
     }
 
     @Override

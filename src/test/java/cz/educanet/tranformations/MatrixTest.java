@@ -74,15 +74,26 @@ public class MatrixTest {
 
     @Test
     public void timesScalar() {
-        assertEquals(a,a.times(1));
+        double[][] expectedResult={
+            {3, 3, 3},
+            {3, 3, 3},
+        };
+        assertEquals(MatrixFactory.create(expectedResult),a.times(3.0));
     }
 
     @Test
     public void add() {
+        double[][] expectedResult = {
+                {2, 1, 1},
+                {1, 2, 1},
+                {0, 0, 1},
+        };
+        assertEquals(MatrixFactory.create(expectedResult),b.add(c));
     }
 
     @Test
     public void get() {
+        assertEquals(1,a.get(1,1),0);
     }
 
     @Test
